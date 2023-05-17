@@ -1,9 +1,38 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import * as path from 'path' // 消除node错误提示，需要安装 npm i -D @types/node
+import path from 'path' // 消除node错误提示，需要安装 npm i -D @types/node
+// import { visualizer } from 'rollup-plugin-visualizer' //查看生成stats打包视图
+import styleImport from 'vite-plugin-style-import'
+import lessToJS from 'less-vars-to-js'
+import fs from 'fs'
+
+const themeVariables = lessToJS(
+	fs.readFileSync(path.resolve(__dirname, './src/style/theme.less'), 'utf8')
+)
+
+console.log(themeVariables)
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // visualizer({
+    //   open:true,
+    //   gzipSize:true,
+    //   brotliSize:true
+    // }),
+    styleImport({
+			libs: [
+				{
+					libraryName: 'antd',
+					esModule: true,
+					resolveStyle: name => {
+						return `antd/es/${name}/style/index`
+					},
+				},
+			],
+		}),
+  ],
   resolve:{
     // 配置别名
     alias:{
@@ -12,16 +41,15 @@ export default defineConfig({
     extensions:['.js','.jsx', '.ts', '.tsx', '.json'] //导入时想要忽略的扩展名列表
   },
   css:{
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+      hashPrefix: 'prefix'
+    },
     preprocessorOptions:{
       less: {
         javascriptEnabled: true,
-        modifyVars: { // 更改主题在这里
-          // 'primary-color': '#52c41a',
-          'primary-color': 'orange',
-          'link-color': '#1DA57A',
-          'border-radius-base': '2px'
-        },
-        
+        modifyVars:themeVariables,
+        additionalData: `@import "${path.resolve(__dirname, 'src/style/global.less')}";`,
       }
     }
   },
@@ -32,10 +60,28 @@ export default defineConfig({
     host:'0.0.0.0',
     // 自动打开浏览器
     open:false,
+    cors:true
+    // https: false,
+    // 代理跨域（mock 不需要配置，这里只是个事列）
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://mock.xx.com/mock/x', // easymock
+    //     changeOrigin: true,
+    //     rewrite: path => path.replace(/^\/api/, '')
+    //   }
+    // }
   },
   build: {
     outDir: "dist",
     minify: "esbuild",
+    // esbuild 打包更快，但是不能去除 console.log，去除 console 使用 terser 模式
+    // minify: 'terser',
+    // terserOptions: {
+    //   compress: {
+    //     drop_console: true,
+    //     drop_debugger: true
+    //   }
+    // },
     rollupOptions: {
       output: {
         chunkFileNames: "assets/js/[name]-[hash].js",
@@ -43,5 +89,6 @@ export default defineConfig({
         assetFileNames: "assets/[ext]/[name]-[hash].[ext]",
       },
     },
+    chunkSizeWarningLimit: 1500
   },
 })
