@@ -1,4 +1,4 @@
-import { Suspense,ReactNode,LazyExoticComponent } from 'react'
+import { Suspense, ReactNode, LazyExoticComponent } from 'react'
 import { Spin } from 'antd'
 const lazyLoad = (Comp: LazyExoticComponent<any>): ReactNode => {
   return (

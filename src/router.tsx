@@ -5,18 +5,18 @@ import TodoRoutes from "@/routes/todoRoutes";
 const AllRoutes = () => {
     return useRoutes([
         {
-            path:"/*",
-            element:<IndexRoutes/>
-        },{
-            path:"/todo",
-            element:<TodoRoutes/>
+            path: "/*",
+            element: <IndexRoutes />
+        }, {
+            path: "/todo/*",
+            element: <TodoRoutes />
         }
     ])
 }
-const RoutesConfig=() => {
-    return(
+const RoutesConfig = () => {
+    return (
         <Router>
-            <AllRoutes/>
+            <AllRoutes />
         </Router>
     )
 }
