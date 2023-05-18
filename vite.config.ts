@@ -10,19 +10,19 @@ import {
   NutuiResolve,
   AntdResolve,
 } from 'vite-plugin-style-import'
-import lessToJS from 'less-vars-to-js'
-import fs from 'fs'
-
-const themeVariables = lessToJS(
-  fs.readFileSync(path.resolve(__dirname, './src/style/theme.less'), 'utf8')
-)
-
-console.log(themeVariables)
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel:{
+        /**
+         *  如果你有js文件中用到了jsx语法，请使用这个插件，然后组件的头部引入
+         *  import React from 'react'
+         */ 
+        // plugins:['@babel/plugin-transform-react-jsx']
+      }
+    }),
     visualizer({
       open: true,
       gzipSize: true,
