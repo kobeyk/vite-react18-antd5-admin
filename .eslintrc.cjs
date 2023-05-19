@@ -10,5 +10,6 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'eqeqeq': 2, // 强制使用 === 和 !==
   },
 }

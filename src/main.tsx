@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import { ConfigProvider, theme } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import RouterConfig from "./router";
+import LayoutContainer from "./layout";
 // 通过在 ConfigProvider 中传入 theme，可以配置主题。在升级 v5 后，将默认使用 v5 的主题，以下是将配置主题示例：
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <ConfigProvider
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       // algorithm: theme.compactAlgorithm, // 紧凑算法
     }}
   >
-    <RouterConfig />
+    {/* <RouterConfig /> */}
+    <LayoutContainer/>
   </ConfigProvider>
 );

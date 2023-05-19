@@ -8,6 +8,10 @@
   "keywords": [
     "vite4+react18+antd5+react-router6+ts5"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/appleyk/vite-react18-antd5-admin.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^5.1.0",
     "antd": "^5.5.0",
     "axios": "^1.4.0",
     "qs": "^6.11.2",
