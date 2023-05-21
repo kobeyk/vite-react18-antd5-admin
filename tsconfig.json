@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts","src/**/*.d.ts","src/**/*.tsx", "src/router.tsx", "src/utils/lazyComponent.tjs"],
+  "include": ["src/**/*.ts","src/**/*.d.ts","src/**/*.tsx", "src/routes/renderRouter.tsx", "src/utils/lazyComponent.tjs"],
   "references": [{ "path": "tsconfig.node.json" }]
 }

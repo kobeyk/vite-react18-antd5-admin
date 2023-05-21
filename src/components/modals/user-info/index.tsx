@@ -1,4 +1,4 @@
-import { message, Modal } from "antd";
+import { App, Modal } from "antd";
 import { Ref, useImperativeHandle, useState } from "react";
 
 export interface RefProps {
@@ -7,7 +7,15 @@ export interface RefProps {
 
 /** 用户个人信息查看模态框 */
 const UserInfoModal = (props: { innerRef: Ref<RefProps> }) => {
+  /**
+   * 使用这种方式，方式开发环境下antd5报错：
+   * Warning: [antd: message] Static function can not consume context like
+   * dynamic theme. Please use 'App' component instead.
+   * 注意，需要在main.tsx文件中全局引入App包裹组件，将路由组件包裹在其下面
+   */
+  const {message} = App.useApp();
   const [visible, setVisible] = useState(false);
+  const [alias,setAlias] = useState("")
   /**
    * 通过useImperativeHandle的Hook, 
    * 将父组件传入的ref和useImperativeHandle第二个参数返回的对象绑定到了一起
@@ -23,21 +31,21 @@ const UserInfoModal = (props: { innerRef: Ref<RefProps> }) => {
 
   const handleOk = () => {
     setVisible(false)
-    message.success('修改密码成功 🎉🎉🎉')
+    message.success(`${alias}修改个人信息成功 🎉🎉🎉`)
   }
 
   const handleCancel = () => {
     setVisible(false)
   }
 
-  const showModal = (params: { name: number }) => {
-    console.log(params);
+  const showModal = (params: { name: string }) => {
+    setAlias(params.name)
     setVisible(true);
   };
 
   return (
     <Modal
-      title="修改密码"
+      title="个人信息"
       open={visible}
       onOk={handleOk}
       onCancel={handleCancel}
@@ -49,5 +57,4 @@ const UserInfoModal = (props: { innerRef: Ref<RefProps> }) => {
     </Modal>
   );
 };
-
 export default UserInfoModal;

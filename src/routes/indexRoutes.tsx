@@ -7,7 +7,7 @@ const IndexRoutes = () => {
     return useRoutes([
         {
             path: "",
-            element: lazyLoad(lazy(() => import('@/pages/App'))),
+            element: lazyLoad(lazy(() => import('@/layout'))),
             children: [
                 {
                     path: "home",
