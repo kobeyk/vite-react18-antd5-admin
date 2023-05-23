@@ -4,19 +4,20 @@ import HeaderLogo from "./components/header-logo"
 import "./index.scss"
 import SwitchDark from './components/header-switch-dark/index';
 import FullScreen from "./components/header-full-screen";
-const {Header} = Layout
+const { Header } = Layout
 /** 头部 */
-const LayoutHeader = (props:{className?:string}) => {
+const LayoutHeader = (props: { className?: string }) => {
+  console.log('header render')
   return (
     <Header {...props}>
       <div className="header-left">
-        <HeaderLogo/>
+        <HeaderLogo />
       </div>
-        <div className="header-right">
-          <SwitchDark/>
-          <FullScreen/>
-          <Avatar/>
-        </div>
+      <div className="header-right">
+        <SwitchDark />
+        <FullScreen />
+        <Avatar />
+      </div>
     </Header>
   )
 }

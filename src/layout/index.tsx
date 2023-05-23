@@ -7,11 +7,11 @@ import LayoutContent from "./layout-content"
 const WebContainer = () => {
   return (
     <Layout className="layout">
-      <LayoutHeader className="header"/>
+      <LayoutHeader className="header" />
       <Layout className="bottom">
-        <LayoutSlider/>
+        <LayoutSlider />
         <Layout.Content>
-          <LayoutContent/>
+          <LayoutContent />
         </Layout.Content>
       </Layout>
     </Layout>

@@ -1,7 +1,10 @@
+import { Outlet } from "react-router-dom"
 
 const LayoutContent = () => {
   return (
-    <div>LayoutContent</div>
+    <div>
+      <Outlet />
+    </div>
   )
 }
 
