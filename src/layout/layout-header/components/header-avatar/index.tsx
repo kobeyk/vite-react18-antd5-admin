@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import UserInfoModal, { RefProps } from "@/components/modals/user-info";
+import UserInfoModal, { RefProps } from "./modals/user-info";
 import { Avatar, Dropdown} from "antd";
 import { useNavigate } from "react-router-dom";
 import type { MenuProps } from "antd";
 import head from "@/assets/images/head.jpg";
-import UserPasswordModal from "@/components/modals/user-password";
+import UserPasswordModal from "./modals/user-password";
 
 const AvatarIcon = () => {
   const navigate = useNavigate();

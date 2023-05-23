@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            height: 100vh;
+        }
+        .left{
+            float: left;
+            width: 200px;
+            height: 100%;
+            background-color: lightblue;
+            text-align: center;
+        }
+        .right{
+            height: 100%;
+            text-align: center;
+            overflow: hidden;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="left">固定宽度</div>
+        <div class="right">自适应宽度</div>
+    </div>
+</body>
+</html>

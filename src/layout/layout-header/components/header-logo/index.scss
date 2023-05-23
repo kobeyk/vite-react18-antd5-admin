@@ -1,0 +1,30 @@
+@import "@/styles/variables.scss";
+@mixin wh($width) {
+    width: $width;
+    height:$width;
+}
+@mixin divHLH{
+    /**设置div的height和inline-height一样，达到文字垂直居中*/
+    height: $topHeight;
+    line-height: $topHeight ;
+}
+.logo {
+    position: relative;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    @include divHLH;
+    img {
+        @include wh(35px);
+        position: relative;
+    }
+    span {
+        margin-left: 15px;
+        color: lightcyan;
+        font-size: 24px;
+        font-weight:bold;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 350px;
+            background-color: red;
+            /* overflow: hidden; */
+            /* float:left */
+            /* position:absolute; */
+            /* display: inline-block; */
+            height: 500px;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            line-height:100px;
+            text-align: center;
+            margin: 0 auto; /**上下自动，左右居中*/
+        }
+        .bfc{
+            overflow: hidden;
+        }
+        .child1{
+            margin-bottom: 20px;
+            background-color: lightblue;
+        }
+        .child2{
+            margin-top: 50px;
+            margin-bottom: 70px;
+            background-color: lightcoral;
+        }
+        .child3{
+            margin-top: 50px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <!-- margin重叠，为每一个元素套一个父元素，构造BFC环境，就可以消除 -->
+        <div class="bfc">
+            <div class="child child1">1</div>
+        </div>
+        <div class="bfc">
+            <div class="child child2">2</div>
+        </div>
+        <div class="bfc">
+            <div class="child child3">3</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.layout-slider {
+    /**
+      * 由于ant-layout-sider的样式优先级大于我们自己的，
+      * !important作用是提高指定CSS样式规则的应用优先权。
+     */
+    background: #fff !important;
+}

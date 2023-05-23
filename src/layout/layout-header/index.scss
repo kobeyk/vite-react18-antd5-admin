@@ -1,0 +1,24 @@
+@import '@/styles/variables.scss';
+.header{ /**这里也可以覆盖.ant-layout-header的样式*/
+    display: flex;
+    justify-content: space-between;
+    background-color: $hederColor;
+    .header-left{
+        /**这个不用管，只管右边右边就行，左边自适应*/
+    }
+    .header-right{
+        /**flex布局走起*/
+        display: flex;
+        align-items: center;
+        .header-right-fullscreen{
+            color: lightpink;
+            margin: 0 30px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        .ant-avatar{
+            cursor: pointer;
+        }
+    }
+}

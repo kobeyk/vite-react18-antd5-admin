@@ -1,0 +1,7 @@
+$topHeight: 60px;
+$hederColor: #005aa7; 
+/**暴露变量*/
+:export {
+    topHeight:$topHeight;
+    hederColor:$hederColor;
+}

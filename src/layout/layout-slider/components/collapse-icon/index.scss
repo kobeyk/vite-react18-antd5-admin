@@ -1,0 +1,11 @@
+.slider-collapse{
+    /**绝对定位 position：absolute （不保留位置 脱离文档流）*/
+    position:absolute;
+    right: 20px;
+    bottom: 40px;
+    .anticon svg{
+        /**em相对于父元素字体的1.5倍*/
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
