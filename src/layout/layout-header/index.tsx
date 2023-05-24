@@ -7,7 +7,6 @@ import FullScreen from "./components/header-full-screen";
 const { Header } = Layout
 /** 头部 */
 const LayoutHeader = (props: { className?: string }) => {
-  console.log('header render')
   return (
     <Header {...props}>
       <div className="header-left">

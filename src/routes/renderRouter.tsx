@@ -1,24 +1,6 @@
-import { HashRouter as Router, useRoutes } from "react-router-dom";
-import IndexRoutes from "@/routes/indexRoutes";
-import TodoRoutes from "@/routes/todoRoutes";
+import {RouteObject, useRoutes } from "react-router-dom";
 
-const AllRoutes = () => {
-    return useRoutes([
-        {
-            path: "/*",
-            element: <IndexRoutes />
-        }, {
-            path: "/todo/*",
-            element: <TodoRoutes />
-        }
-    ])
-}
-const RoutesConfig = () => {
-    return (
-        <Router>
-            <AllRoutes />
-        </Router>
-    )
-}
+/** 动态创建路由（<Routes>和<Route>） */
+export const Router = ({ routes }: { routes: RouteObject[] }) => useRoutes(routes)
 
-export default RoutesConfig;
+

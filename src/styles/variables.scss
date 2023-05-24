@@ -1,7 +1,9 @@
 $topHeight: 60px;
 $hederColor: #005aa7; 
+$layoutBody:  #eef0f3;
 /**暴露变量*/
 :export {
     topHeight:$topHeight;
     hederColor:$hederColor;
+    layoutBody:$layoutBody;
 }

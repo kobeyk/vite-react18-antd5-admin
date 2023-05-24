@@ -1,12 +1,13 @@
-.img-icon{
-    display: inline-block;
-    height: 20px;
-    overflow: hidden;
-    line-height: 20px;
-  
-    > .icon {
-      position: relative;
-      width: 16px;
-      height: 16px;
-    }
+.img-icon {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 20px;
+
+  > .icon {
+    position: relative;
+    max-width: 16px;
+    // 当内容小于最大高度时，容器高度会随内容的减少而进行压缩，
+    // 而内容大于最大高度时，容器不会随着内容的增多而变大，而内容会直接溢出容器  
+    max-height: 16px;
+  }
 }

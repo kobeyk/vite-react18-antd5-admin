@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import homeIcon from '@/assets/images/menu-icon/home1.svg';
 import ImgIcon from "@/components/image-icon";
 import {
@@ -6,15 +5,9 @@ import {
   InfoCircleOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons'
+import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 
-interface MenuItem {
-  label?: ReactNode;
-  key?: React.Key;
-  icon?: ReactNode;
-  children?: MenuItem[];
-  type?: "group";
-}
-const sliderMenus: MenuItem[] = [
+const sliderMenus: ItemType<MenuItemType>[] = [
   {
     label: "首页",
     key: "/home",

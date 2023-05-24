@@ -1,10 +1,12 @@
 import { Outlet } from "react-router-dom"
-
+import { Layout } from "antd"
+const {Content} = Layout
 const LayoutContent = () => {
   return (
-    <div>
+    <Content>
+      {/* 渲染子路由 */}
       <Outlet />
-    </div>
+    </Content>
   )
 }
 

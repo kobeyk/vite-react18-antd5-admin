@@ -1,12 +1,13 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom"
+
 const ToDo = () => {
-    return (
-      <div>
+  return (
+    <div>
         ToDo
         <hr />
         <Outlet/>
-      </div>
-    )
-  }
-  
-  export default ToDo;
+    </div>
+  )
+}
+
+export default ToDo

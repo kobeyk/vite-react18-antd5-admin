@@ -1,29 +1,26 @@
-import { lazy } from "react"
-import { useRoutes } from "react-router-dom";
+import { lazy } from "react";
 import NotFound from "@/pages/not-found";
 import lazyLoad from "@/components/lazy-load";
+import { RouteObject, Navigate } from 'react-router-dom';
 
-
-const TodoRoutes = () => {
-    return useRoutes([
-        {
-            path: "",
-            element: lazyLoad(lazy(() => import('@/pages/todo'))),
-            children: [
-                {
-                    path: "",
-                    element: lazyLoad(lazy(() => import('@/pages/todo/todo-list'))),
-                },
-                {
-                    path: "list",
-                    element: lazyLoad(lazy(() => import('@/pages/todo/todo-list'))),
-                },
-                {
-                    path: "*",
-                    element: <NotFound />
-                }
-            ]
-        }
-    ])
-}
+const TodoRoutes:RouteObject[] = [
+  {
+    path: "/todo",
+    element: lazyLoad(lazy(() => import("@/pages/todo"))),
+    children: [
+      {
+        path: "",
+        element: <Navigate to="/todo/list"/>,
+      },
+      {
+        path: "list",
+        element: lazyLoad(lazy(() => import("@/pages/todo/todo-list"))),
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
+  },
+];
 export default TodoRoutes;

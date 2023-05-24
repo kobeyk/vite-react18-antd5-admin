@@ -1,44 +1,89 @@
-import { Layout, MenuProps } from "antd"
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Menu } from "antd"
-import menuItems from '@/routes/menu';
-import './index.scss'
-import CollapseIcon from './components/collapse-icon/index';
+import { Layout, MenuProps } from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Menu } from "antd";
+import menuItems from "@/routes/sliderMenus";
+import "./index.scss";
+import CollapseIcon from "./components/collapse-icon/index";
 import { useEffect, useState } from "react";
 
-const { Sider } = Layout
+const { Sider } = Layout;
 const LayoutSlider = () => {
+  /**获取当前路由的pathname*/
   const { pathname } = useLocation();
-  const navigate = useNavigate()
-  const [bCollapse, setCollapse] = useState<boolean>(false)
-  const menuOnClick: MenuProps['onClick'] = (e) => {
-    const path = e.keyPath.reverse().join("")
-    console.log(path)
-    navigate(path)
-  }
-  useEffect(() => {
-    /** 监听路由地址变化 */
-  }, [pathname])
+  const navigate = useNavigate();
+  const [items, setItems] = useState<any>([])
+  /**是否折叠菜单*/
+  const [bCollapse, setCollapse] = useState<boolean>(false);
+  /**当前选中的菜单项 key 数组 */
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
+  const menuOnClick: MenuProps["onClick"] = (e) => {
+    /** 菜单点击的keyPath是一个数组，翻转然后连接就是路由地址 */
+    const path = e.keyPath.reverse().join("");
+    /** 判断下，防止重复跳 */
+    if (path !== pathname) {
+      /** 同时要记住用户选择的key，reverse函数会改变原数组所以下面不要再翻转了 */
+      localStorage.setItem("openKeys", e.keyPath.join("-"));
+      navigate(path);
+    }
+  };
 
-  console.log('render')
+  /** 监听路由地址变化，持久化用户选择的菜单keyPath*/
+  useEffect(() => {
+    const setActiveMenu = async () => {
+      const keys: string[] = pathname
+        .split("/")
+        .filter(Boolean) // 过滤 “空” 值，如 null、undefined 或空字符串
+        .map((item: string) => `/${item}`); //最后再带上/
+      setSelectedKeys(keys);
+    };
+    setActiveMenu();
+  }, [pathname]);
+
+  /** 折叠/拉出slider时改变openKeys的值 */
+  useEffect(() => {
+    /** 从浏览器中取 */
+    let openKeys = localStorage.getItem("openKeys");
+    if (openKeys) {
+      setOpenKeys(openKeys.split("-").filter(Boolean));
+    }
+    /** 如果折叠，设置空，不然会冒出来 */
+    if (bCollapse) {
+      // setOpenKeys([]);
+    }
+  }, [bCollapse]);
+
+  /** SubMenu 展开/关闭的回调函数实现 */
+  const handleOpenChange = (openKeys: string[]) => {
+    if (openKeys.length === 0) {
+      return;
+    }
+    setOpenKeys(openKeys);
+    /** 记住用户选择的key，然后转换成字符串 */
+    localStorage.setItem("openKeys", openKeys.filter(Boolean).join("-"));
+  };
+
   return (
-    // 之所以加key,解决刷新的时候颜色选择中的菜单不高亮的问题，让它进行一个重新的渲染。
     <Sider
       trigger={null}
       className="layout-slider"
-      key={`${pathname}+${Math.random()}`}
+      //之所以加key,解决刷新的时候菜单项不展开不高亮的BUG，让它进行一个重新的渲染。
+      key={`${pathname}+${Math.random()}`} 
       collapsed={bCollapse}
     >
-      <Menu mode="inline"
+      <Menu
+        mode="inline"
         items={menuItems}
         triggerSubMenuAction="click"
-        defaultSelectedKeys={['/usermanage', '/rolemanage']}
-        defaultOpenKeys={['/usermanage', '/rolemanage']}
+        defaultSelectedKeys={["/home"]}
+        defaultOpenKeys={openKeys}
+        selectedKeys={selectedKeys}
         onClick={menuOnClick}
+        onOpenChange={(openKeys: string[]) => handleOpenChange(openKeys)}
       />
       <CollapseIcon bCollapse={bCollapse} setCollapse={setCollapse} />
     </Sider>
-  )
-}
+  );
+};
 
-export default LayoutSlider
+export default LayoutSlider;
