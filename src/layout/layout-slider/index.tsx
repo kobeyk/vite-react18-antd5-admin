@@ -11,7 +11,6 @@ const LayoutSlider = () => {
   /**获取当前路由的pathname*/
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const [items, setItems] = useState<any>([])
   /**是否折叠菜单*/
   const [bCollapse, setCollapse] = useState<boolean>(false);
   /**当前选中的菜单项 key 数组 */
@@ -49,7 +48,7 @@ const LayoutSlider = () => {
     }
     /** 如果折叠，设置空，不然会冒出来 */
     if (bCollapse) {
-      // setOpenKeys([]);
+      setOpenKeys([]);
     }
   }, [bCollapse]);
 

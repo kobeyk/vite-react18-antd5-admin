@@ -1,8 +1,46 @@
+@import "@/styles/variables.scss";
+
+$cubic-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+@mixin common {
+  left: -20px;
+  /** 
+    * 阴影
+    * 第一个参数为<color> （可选参数）用来控制阴影颜色
+    * 第二个参数为<offset-x>（必填） 控制阴影的X轴位置，如果为负则向左偏移
+    * 第三个参数为<offset-y>（必填）控制阴影的Y轴位置，如果为负则向上偏移
+    * 第四个参数为<blur-radius> （可选参数）用来控制阴影的模糊度，值越大，越模糊，不允许负值，默认为0
+   */
+  filter: drop-shadow($meunTextSelect 20px 0);
+}
+
 .layout-slider {
-    /**
-      * 由于ant-layout-sider的样式优先级大于我们自己的，
-      * !important作用是提高指定CSS样式规则的应用优先权。
-     */
-    background: #fff !important;
-    min-height: calc(100vh - 55px);
+  /**
+    * 由于ant-layout-sider的样式优先级大于我们自己的，
+    * !important作用是提高指定CSS样式规则的应用优先权。
+    */
+  background: #fff !important;
+  min-height: calc(100vh - $topHeight);
+
+  /**覆盖ant-menu的样式*/
+  .ant-menu {
+    width: 100%;
+    height: 100%;
+    color: $meunText;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: $meunBackground;
+
+    // 选中菜单状态
+    .ant-menu-item-selected {
+      background-color: rgb(34, 134, 155) !important;
+      color: white !important;
+    }
+    /**设置未选中菜单项鼠标滑过样式*/
+    .ant-menu-item-active {
+      > .img-icon > .icon {
+        @include common;
+      }
+    }
+  }
 }

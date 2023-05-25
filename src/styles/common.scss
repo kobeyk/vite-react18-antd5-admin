@@ -1,6 +1,34 @@
 html,
-body{
+body {
     /** 清除浏览器默认样式*/
     margin: 0 auto;
     padding: 0;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    content: "";
+}
+
+//全局滚动条样式
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: fade(#bbb, 60%);
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+    opacity: 0.2;
+}
+
+::-webkit-scrollbar-track {
+    background: fade(#ccc, 30%);
+    border-radius: 0;
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
 }

@@ -1,4 +1,6 @@
 import homeIcon from '@/assets/images/menu-icon/home1.svg';
+import vite from '@/assets/images/menu-icon/vite.svg'; 
+import bill from '@/assets/images/menu-icon/bill.svg'; 
 import ImgIcon from "@/components/image-icon";
 import {
   UserOutlined,
@@ -30,7 +32,24 @@ const sliderMenus: ItemType<MenuItemType>[] = [
         icon: <InfoCircleOutlined />,
       }
     ]
-  }
+  },
+  {
+    label: "数据管理",
+    key: "/data",
+    icon: <ImgIcon icon={bill} />,
+    children:[
+      {
+        label: "字段管理",
+        key: "/filedmanage",
+        icon: <ImgIcon icon={vite} />,
+      },
+      {
+        label: "模板管理",
+        key: "/templatemanage",
+        icon: <ImgIcon icon={vite} />,
+      }
+    ]
+  },
 ];
 
 export default sliderMenus;

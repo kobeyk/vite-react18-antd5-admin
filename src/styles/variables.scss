@@ -1,9 +1,17 @@
 $topHeight: 60px;
 $hederColor: #005aa7; 
 $layoutBody:  #eef0f3;
+$meunText:  #333333;
+$meunSelect:  #dce8ff;
+$meunTextSelect: #206aff;
+$meunBackground:#ffffff;
 /**暴露变量*/
 :export {
     topHeight:$topHeight;
     hederColor:$hederColor;
     layoutBody:$layoutBody;
+    meunText:$meunText;
+    meunSelect:$meunSelect;
+    meunTextSelect:$meunTextSelect;
+    meunBackground:$meunBackground;
 }
