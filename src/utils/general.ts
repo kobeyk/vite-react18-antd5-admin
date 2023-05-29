@@ -1,3 +1,5 @@
+import Item from "antd/es/list/Item";
+
 export default class GeneralUtils {
   /**
    * 将函数做防抖处理,一般用于输入框 内容变动立即请求后端更新数据
@@ -51,6 +53,31 @@ export default class GeneralUtils {
       formData.append(key, data[key]);
     }
     return formData;
+  }
+
+  /**
+   * 获取扁平化的侧边栏路由列表
+   * @param menuItems  结构化的菜单路由对象
+   * @param arr 最终要返回的扁平化路由列表
+   * @returns []
+   */
+  static getFlatMenuRoutes = (menuItems: any,arr:any=[]) => {
+    let valid = menuItems instanceof Array
+    if (!valid) {
+      return []
+    }
+    menuItems.forEach((item:any)=>{
+      /** 这个地方得判断下,菜单项里面有可能是这种的{type: 'divider'} */
+      if (item.key) {
+        let name = item.key.split("/").filter(Boolean).join("")
+        arr.push({name:name,label:item.label})
+        /** 递归遍历路由的children */
+        if (item.children){
+          this.getFlatMenuRoutes(item.children,arr);
+        }
+      }
+    })
+    return [...arr];
   }
 
 }

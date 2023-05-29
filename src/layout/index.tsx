@@ -1,9 +1,10 @@
-import { Breadcrumb, Layout } from "antd";
+import { Layout } from "antd";
 import LayoutHeader from "./layout-header";
 import LayoutSlider from "./layout-slider";
 import "./index.scss";
 
 import LayoutContent from "./layout-content";
+import BreadCrumb from "@/components/breadcrumb";
 const Layouts = () => {
   return (
     <Layout className="layout">
@@ -12,11 +13,7 @@ const Layouts = () => {
         <LayoutSlider />
         <Layout.Content className="content">
           <div className="content-breadcrumb">
-            <Breadcrumb>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
+            <BreadCrumb/>
           </div>
           <div className="content-container">
             <LayoutContent />
