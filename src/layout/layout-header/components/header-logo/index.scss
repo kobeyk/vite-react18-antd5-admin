@@ -1,5 +1,5 @@
 @import "@/styles/variables.scss";
-@mixin wh($width) {
+@mixin wh($width) { // scss的混入，可以将通用的部分进行封装然后复用
     width: $width;
     height:$width;
 }
@@ -11,8 +11,8 @@
 .logo {
     position: relative;
     left: -10px;
-    display: flex;
-    align-items: center;
+    display: flex; /**是当前logo元素成为一个容器，拥有弹性布局，就有两根轴线，就可以任意摆布容器内部的item*/
+    align-items: center; /**内容水平居中*/
     @include divHLH;
     img {
         @include wh(35px);

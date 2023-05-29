@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   timeout: 60 * 1000,
 });
 
-
+/** 当前请求的配置 */
 let currentConfig : AxiosRequestConfig =  {}
 
 /** 请求拦截器 */

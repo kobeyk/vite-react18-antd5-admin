@@ -18,6 +18,7 @@ const SwitchDark = () => {
     changeTheme(checked);
   };
   return (
+    // 通过antd的开关UI组件，配合CSS将整个页面的亮度调低
     <Switch
       className="dark"
       defaultChecked={theme}

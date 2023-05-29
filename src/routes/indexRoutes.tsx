@@ -17,8 +17,9 @@ const IndexRoutes:RouteObject[]= [
         element: lazyLoad(lazy(() => import("@/pages/home"))),
       },
       {
-        path: "about",
+        path: "usermanage/rolemanage",
         element: lazyLoad(lazy(() => import("@/pages/about"))),
+        
       },
       {
         path: "*",

@@ -72,7 +72,7 @@ export default defineConfig({
     port: 3020,
     // 主机 解决vite use--host to expose
     host: '0.0.0.0',
-    // 自动打开浏览器
+    // 自动打开浏览器,由于每次启动都会弹出，所以这个可以适当的关闭
     open: false,
     cors: true
     // https: false,

@@ -8,7 +8,6 @@
         height: $topHeight;
     }
     .bottom {
-        display: flex;
         width: 100%;
         /**布局分为上下，上是头部固定高，下部分利用计算得出*/
         height: calc(100% - $topHeight);
@@ -22,6 +21,7 @@
                 height: 20px;
             }
             .content-container {
+                display: flex;
                 width: 100%;
                 height: calc(100% - 70px);
                 padding: 15px;
