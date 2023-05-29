@@ -1,38 +1,46 @@
-.user-session-wrapper{
-    /**登录和注册的form表单的最新高宽一定要满足如下的，不然随着浏览器缩放会挤压元素造成布局混乱*/
-    min-width: 1050px; 
-    min-height: 99.9vh;
-    /***/
-    .wrapper-container{
-        position: absolute;
-        width: 1000px;
-        /**垂直居中*/
-        top:50%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        // background-color: pink;
-        /** */
-        .container-body{
-            display: flex;
-            margin: auto;
-            width: inherit;
-            position: relative;
-            box-shadow: 0px 20px 80px 0px rgba(0,0,0,0.3);
-            .session-left-box{
-                color: #fff;
-                position: relative;
-                padding: 80px 80px 48px;
-                width: 50%;
-                margin: 0 auto;
-                min-height: 564px;
-                background-color: pink;
-            }
-            .session-right-form{
+@mixin bodyDiv($color) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 150px);
+    background-color: $color;
+}
 
+.user-session-wrapper {
+    /**登录和注册的form表单的最新高宽一定要满足如下的，不然随着浏览器缩放会挤压元素造成布局混乱*/
+    min-width: 1050px;
+    min-height: 99.9vh;
+
+    .wrapper-container {
+        position: absolute;
+        width: 80%;
+        /**垂直居中*/
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: lightgreen;
+
+
+        .container-body {
+            display: flex;
+            height: 80%;
+            position: relative;
+            box-shadow: 0px 20px 80px 0px rgba(220, 67, 67, 0.3);
+
+            .session-left-box {
+                @include bodyDiv(lightgreen)
+            }
+
+            .session-right-form {
+                @include bodyDiv(lightslategray)
             }
         }
-        .container-footer{
 
+        .container-footer {
+            position: relative;
+            height: 40px;
+            background-color: lightcoral;
         }
     }
 
