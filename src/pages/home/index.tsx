@@ -1,7 +1,8 @@
 import { fetchPost } from "@/core/api/fetchPost";
-import { Button } from "antd";
 import GeneralUtils from "@/utils/general";
 import { AxiosCanceler } from "@/utils/helper/axiosCanceler";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const _login = () => {
@@ -32,6 +33,8 @@ const Home = () => {
       <Button type="primary" onClick={_loginCancel}>
         Sign In Cancel
       </Button>
+      <hr/>
+      <Link to="/signin">用户登录</Link>
     </div>
   );
 };

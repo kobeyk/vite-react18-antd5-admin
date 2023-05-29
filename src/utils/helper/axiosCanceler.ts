@@ -66,7 +66,6 @@ export class AxiosCanceler {
    */
   public removePending(config: AxiosRequestConfig|UrlConfig): void {
     const url = this.getPendingUrl(config);
-    console.log("url(cancel) = ", url);
     if (AxiosCanceler.pendingMap.has(url)) {
       // 如果当前请求在等待中，取消它并将其从等待中移除
       const abortController = AxiosCanceler.pendingMap.get(url);
