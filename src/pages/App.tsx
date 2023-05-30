@@ -1,7 +1,5 @@
-import IndexRoutes from "@/routes/homeRoutes";
+import allRoutes from "@/routes";
 import { Router } from "@/routes/renderRouter";
-import TodoRoutes from "@/routes/todoRoutes";
-import UserRoutes from "@/routes/userRoutes";
 import { App } from "antd";
 import { FC, ReactElement } from "react";
 import { HashRouter } from "react-router-dom";
@@ -11,7 +9,7 @@ const AppIndex: FC = (): ReactElement => {
     <App>
       <HashRouter>
          {/* 渲染路由组件 */}
-        <Router routes={[...IndexRoutes,...TodoRoutes,...UserRoutes]}/>
+        <Router routes={allRoutes}/>
       </HashRouter>
     </App>
   );

@@ -1,4 +1,4 @@
-import Item from "antd/es/list/Item";
+import { IRouteObject } from "@/routes/renderRouter";
 
 export default class GeneralUtils {
   /**
@@ -56,14 +56,13 @@ export default class GeneralUtils {
   }
 
   /**
-   * 获取扁平化的侧边栏路由列表
+   * 获取扁平化的侧边栏路由列表对象
    * @param menuItems  结构化的菜单路由对象
    * @param arr 最终要返回的扁平化路由列表
    * @returns []
    */
   static getFlatMenuRoutes = (menuItems: any,arr:any=[]) => {
-    let valid = menuItems instanceof Array
-    if (!valid) {
+    if (!(menuItems instanceof Array)) {
       return []
     }
     menuItems.forEach((item:any)=>{
@@ -78,6 +77,32 @@ export default class GeneralUtils {
       }
     })
     return [...arr];
+  }
+
+  /**
+   * 获取扁平化的路由列表对象
+   * @param routes  结构化的路由对象
+   * @param arr 最终要返回的扁平化路由列表
+   * @returns []
+   */
+  static getFlatRoutes = (routes: IRouteObject[],arr:any=[]) => {
+    if (!(routes instanceof Array)) {
+      return []
+    }
+    routes.forEach((item)=>{
+        arr.push({
+          name:item.meta ? item.meta.title : "",
+          path:item.path,
+          requireAuth:item.meta ? item.meta.requireAuth : true,
+          roles:item.meta ? item.meta.authRoles : [],
+          purviews:item.meta ? item.meta.authPurviews : [],
+        })
+        if (item.children) {
+           // 递归调用
+           this.getFlatRoutes(item.children,arr);
+        }
+    })
+    return [...arr]
   }
 
 }

@@ -1,16 +1,17 @@
-import { Layout, MenuProps } from "antd";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Menu } from "antd";
-import menuItems from "@/routes/sliderMenus";
-import "./index.scss";
-import CollapseIcon from "./components/collapse-icon/index";
+import menuItems from "@/routes/menu/sliderMenus";
+import { Layout, Menu, MenuProps } from "antd";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import CollapseIcon from "./components/collapse-icon/index";
+import "./index.scss";
 
 const { Sider } = Layout;
 const LayoutSlider = () => {
   /**获取当前路由的pathname*/
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  /** 菜单项，这个需要通过鉴权去动态渲染 */
+  const [items,setItems] = useState();
   /**是否折叠菜单*/
   const [bCollapse, setCollapse] = useState<boolean>(false);
   /**当前选中的菜单项 key 数组 */

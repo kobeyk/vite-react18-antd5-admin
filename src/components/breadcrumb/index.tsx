@@ -1,6 +1,6 @@
 import GeneralUtils from "@/utils/general";
 import { Breadcrumb } from "antd";
-import sliderMenus from "@/routes/sliderMenus";
+import sliderMenus from "@/routes/menu/sliderMenus";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 /** 自定义面包屑，主要实现通过路由地址来反推菜单栏 */

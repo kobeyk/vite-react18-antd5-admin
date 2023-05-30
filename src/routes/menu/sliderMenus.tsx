@@ -9,6 +9,9 @@ import {
 } from '@ant-design/icons'
 import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 
+/**
+ * 菜单一定是跟路由有映射关系的，也就是一个惨淡
+ */
 const sliderMenus: ItemType<MenuItemType>[] = [
   {
     label: "首页",
