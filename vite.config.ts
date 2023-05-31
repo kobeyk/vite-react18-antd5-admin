@@ -1,15 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path' // 消除node错误提示，需要安装 npm i -D @types/node
-import { visualizer } from 'rollup-plugin-visualizer' //查看生成stats打包视图
+import react from '@vitejs/plugin-react';
+import path from 'path'; // 消除node错误提示，需要安装 npm i -D @types/node
+import { visualizer } from 'rollup-plugin-visualizer'; //查看生成stats打包视图
+import { defineConfig } from 'vite';
 import {
-  createStyleImportPlugin,
-  AndDesignVueResolve,
-  VantResolve,
-  ElementPlusResolve,
-  NutuiResolve,
-  AntdResolve,
-} from 'vite-plugin-style-import'
+  AndDesignVueResolve, AntdResolve, createStyleImportPlugin, ElementPlusResolve,
+  NutuiResolve, VantResolve
+} from 'vite-plugin-style-import';
 
 // https://vitejs.dev/config/
 export default defineConfig({

@@ -1,10 +1,10 @@
-import ReactDOM from "react-dom/client";
+import "@/styles/index.scss";
 import { ConfigProvider, theme } from "antd";
 import zhCN from "antd/locale/zh_CN";
-import App from "./pages/App";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import App from "./pages/App";
 import { store } from "./store/store";
-import "@/styles/index.scss";
 
 // 通过在 ConfigProvider 中传入 theme，可以配置主题。在升级 v5 后，将默认使用 v5 的主题，以下是将配置主题示例：
 ConfigProvider.config({

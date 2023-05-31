@@ -1,5 +1,14 @@
 import { IRouteObject } from "@/routes/renderRouter";
 
+/** 定义扁平化路由对象 */
+export interface IFlatRouteObject{
+  name?:string;
+  path?:string;
+  purviews?:number[];
+  roles?:string[];
+  requireAuth?:boolean;
+}
+
 export default class GeneralUtils {
   /**
    * 将函数做防抖处理,一般用于输入框 内容变动立即请求后端更新数据
@@ -85,7 +94,7 @@ export default class GeneralUtils {
    * @param arr 最终要返回的扁平化路由列表
    * @returns []
    */
-  static getFlatRoutes = (routes: IRouteObject[],arr:any=[]) => {
+  static getFlatRoutes = (routes: IRouteObject[],arr:IFlatRouteObject[]=[]):IFlatRouteObject[] => {
     if (!(routes instanceof Array)) {
       return []
     }
@@ -93,7 +102,8 @@ export default class GeneralUtils {
         arr.push({
           name:item.meta ? item.meta.title : "",
           path:item.path,
-          requireAuth:item.meta ? item.meta.requireAuth : true,
+          /** 如果没有指定必须认证，则为false */
+          requireAuth:item.meta ? item.meta.requireAuth : false,
           roles:item.meta ? item.meta.authRoles : [],
           purviews:item.meta ? item.meta.authPurviews : [],
         })

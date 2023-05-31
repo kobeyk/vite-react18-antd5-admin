@@ -1,7 +1,6 @@
-import { Button } from "antd";
-import { addUser, UserModel } from '@/core/service/UserService';
+import { addUser, queryUser, UserModel } from '@/core/service/UserService';
 import { uesAppDispatch } from '@/store/hooks';
-import { queryUser } from '@/core/service/UserService';
+import { Button } from "antd";
 import { useAppSelector } from '../../store/hooks';
 const About = () => {
   const dispatch = uesAppDispatch()

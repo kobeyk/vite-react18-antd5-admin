@@ -9,12 +9,12 @@ export class RouteMeta{
     /** 路由标题 */
     title?: string = "";
     /** 访问当然路由页面是否需要用户登录，默认true需要，false说明不登录也可以直接访问 */
-    requireAuth ?:boolean = true;
+    requireAuth ?:boolean = false;
     /** 当前路由匹配的用户角色列表 */
     authRoles?:string[] = [];
     /** 当前路由匹配的用户权限列表 */
     authPurviews?:number[] = [];
-    constructor(title:string,requireAuth:boolean = true,
+    constructor(title:string,requireAuth:boolean = false,
         authRoles:string[]=[],authPurviews:number[]=[]){
         this.title = title;
         this.requireAuth = requireAuth;

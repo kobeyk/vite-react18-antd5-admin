@@ -1,10 +1,15 @@
 import { fetchPost } from "@/core/api/fetchPost";
+import handler from "@/design-mode/chain-of-responsibility/v1";
 import GeneralUtils from "@/utils/general";
 import { AxiosCanceler } from "@/utils/helper/axiosCanceler";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import AbstractHandler from '../../design-mode/chain-of-responsibility/v1/AbstractHandler';
 
 const Home = () => {
+  const h:AbstractHandler<number> = handler(1)
+  let data = h.process();
+  console.log({ data})
   const _login = () => {
     let authUser = {
       appId: 3,

@@ -1,5 +1,5 @@
-import withGuard from "@/components/router-guard";
-import NotFound from "@/pages/not-found";
+import LazyLoad from "@/components/router-wrapper/LazyLoad";
+import NotFound from "@/pages/error/404";
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import { IRouteObject, RouteMeta } from "../renderRouter";
@@ -7,7 +7,7 @@ import { IRouteObject, RouteMeta } from "../renderRouter";
 const TodoRoutes: IRouteObject[] = [
   {
     path: "/todo",
-    element: withGuard(lazy(() => import("@/pages/todo"))),
+    element: LazyLoad(lazy(() => import("@/pages/todo"))),
     meta: { title: "任务管理" },
     children: [
       {
@@ -17,7 +17,7 @@ const TodoRoutes: IRouteObject[] = [
       },
       {
         path: "/todo/list",
-        element: withGuard(lazy(() => import("@/pages/todo/todo-list"))),
+        element: LazyLoad(lazy(() => import("@/pages/todo/todo-list"))),
         meta: new RouteMeta("任务列表"),
       },
       {
