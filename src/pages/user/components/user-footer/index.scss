@@ -1,0 +1,16 @@
+.container-footer {
+    margin-top: 50px;
+    text-align: center;
+    /** +号表示从第二个元素开始使用设定的样式，第一个不生效 */
+    .user-footer-item,.user-footer-item+.user-footer-item{
+        a{
+            color:#8C92A4;
+        }
+        a:hover{
+            color: red;
+        }
+    }
+    .user-footer-item+.user-footer-item{
+        margin-left: 8px;
+    }
+}

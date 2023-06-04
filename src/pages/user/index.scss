@@ -1,46 +1,92 @@
-@mixin bodyDiv($color) {
+@mixin bodyDiv {
     width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 150px);
-    background-color: $color;
+    min-height: 564px;
+    margin: 0 auto;
+}
+
+/**伪元素,在整个包装器之前添加一个元素*/
+.user-session-wrapper::before{
+    width: 394px;
+    height: 468px;
+    background-image: url(@/assets/images/background/bg-left.png);
+    left: 0;
+}
+
+/**伪元素,在整个包装器之后添加一个元素*/
+.user-session-wrapper::after{
+    width: 487px;
+    height: 412px;
+    background-image: url(@/assets/images/background/bg-right.png);
+    right: 0;
+}
+
+.user-session-wrapper::before,.user-session-wrapper::after{
+    content: "";
+    bottom: 0;
+    position:fixed;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+  /**为左边div容器添加两个伪元素，主要放背景图片*/
+.session-left-box::before{
+    background: url(@/assets/images/background/box-left.png) no-repeat 0 0;
+}
+.session-left-box::after{
+    background: url(@/assets/images/background/box-right.png) no-repeat right bottom;
+}
+/**这两个伪元素公用的样式部分*/
+.session-left-box::before,.session-left-box::after{
+    content: "";
+    /**
+      * 如果当前伪元素的定位设置为absolute，则其相对的是第一个非static的元素
+      * 如果没有找到,那就是相对于浏览器
+      */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .user-session-wrapper {
     /**登录和注册的form表单的最新高宽一定要满足如下的，不然随着浏览器缩放会挤压元素造成布局混乱*/
-    min-width: 1050px;
+    min-width: 1040px;
     min-height: 99.9vh;
+    position: relative;
 
     .wrapper-container {
-        position: absolute;
-        width: 80%;
-        /**垂直居中*/
+        position:absolute;
         top: 50%;
         left: 50%;
+        width: 1000px;
+        margin:0 auto;
+        /**左移和上移自身元素的50%长宽使得元素水平垂直居中*/
         transform: translate(-50%, -50%);
-        background-color: lightgreen;
-
-
+        padding: 0;
+        z-index: 1;
         .container-body {
             display: flex;
-            height: 80%;
             position: relative;
-            box-shadow: 0px 20px 80px 0px rgba(220, 67, 67, 0.3);
-
+            margin: auto;
+            width: inherit;
+            box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.3);
             .session-left-box {
-                @include bodyDiv(lightgreen)
+                @include bodyDiv;
+                position: relative;
+                color:#fff;
+                /**背景渐变色*/
+                background: linear-gradient(0deg, #3a485a 0%, #607089 100%);
             }
-
             .session-right-form {
-                @include bodyDiv(lightslategray)
+                @include bodyDiv;
+                background: #fff;
+                /**表单item水平垂直居中*/
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-        }
-
-        .container-footer {
-            position: relative;
-            height: 40px;
-            background-color: lightcoral;
         }
     }
 
