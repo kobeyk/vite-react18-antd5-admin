@@ -1,12 +1,11 @@
+import bill from '@/assets/images/menu-icon/bill.svg';
 import homeIcon from '@/assets/images/menu-icon/home1.svg';
-import vite from '@/assets/images/menu-icon/vite.svg'; 
-import bill from '@/assets/images/menu-icon/bill.svg'; 
+import vite from '@/assets/images/menu-icon/vite.svg';
 import ImgIcon from "@/components/image-icon";
+import i18n from '@/i18n';
 import {
-  UserOutlined,
-  InfoCircleOutlined,
-  ExclamationCircleOutlined
-} from '@ant-design/icons'
+  ExclamationCircleOutlined, InfoCircleOutlined, UserOutlined
+} from '@ant-design/icons';
 import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
 
 /**
@@ -14,7 +13,7 @@ import { ItemType, MenuItemType } from "antd/es/menu/hooks/useItems";
  */
 const sliderMenus: ItemType<MenuItemType>[] = [
   {
-    label: "首页",
+    label: i18n.t('sliderMenu.home'),
     key: "/home",
     icon: <ImgIcon icon={homeIcon} />
   },
@@ -54,5 +53,9 @@ const sliderMenus: ItemType<MenuItemType>[] = [
     ]
   },
 ];
+
+i18n.on('languageChanged', () => {
+  window.location.reload()
+});
 
 export default sliderMenus;

@@ -82,10 +82,6 @@
             .session-right-form {
                 @include bodyDiv;
                 background: #fff;
-                /**表单item水平垂直居中*/
-                display: flex;
-                align-items: center;
-                justify-content: center;
             }
         }
     }

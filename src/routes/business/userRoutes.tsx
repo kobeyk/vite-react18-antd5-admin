@@ -10,7 +10,7 @@ const UserRoutes: IRouteObject[] = [
   },
   {
     path: "/signup",
-    element: LazyLoad(lazy(() => import("@/pages/user/user-signup"))),
+    element: LazyLoad(lazy(() => import("@/pages/user/user-signin"))),
     meta: new RouteMeta("用户注册",false),
   },
 ];

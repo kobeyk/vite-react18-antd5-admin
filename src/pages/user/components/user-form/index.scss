@@ -1,3 +1,32 @@
-.login-form{
+@import "@/styles/variables.scss";
+
+.user-form{
+    position:relative;
+    margin: 0 auto;
+    margin-top: 100px;
     width: 400px;
+
+    /**头部*/
+    .form-header {
+        height: 26px;
+        display: flex;
+        /**底部对齐*/
+        align-items: flex-end;
+        /**两端对齐，项目之间的间隔都相等*/
+        justify-content: space-between;
+        margin:0px 0px 24px;
+        .form-header-title{
+            color: #40485B;
+            font-size:24px;
+            font-weight: bold;
+            line-height: 26px;
+        }
+        .form-header-title-tip{
+            float: right;
+         }
+    }
+    .ant-input{
+        height: 40px;
+    }
 }
+

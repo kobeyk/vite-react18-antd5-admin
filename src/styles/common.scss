@@ -32,3 +32,20 @@ body {
     border-radius: 0;
     box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
 }
+
+/**去除浏览器自动填充input输入框带背景色*/
+input{
+    width: 100%;
+    background: transparent;
+    height: 100%;
+    font-size: 15px;
+    &::placeholder {
+        background: transparent;
+        color: #B2B2B2;
+        font-size: 15px;
+    }
+    &:-webkit-autofill{
+        background: transparent;
+        transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+    }
+}
