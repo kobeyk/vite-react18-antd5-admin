@@ -39,7 +39,7 @@ const sliderMenus: ItemType<MenuItemType>[] = [
     label: "数据管理",
     key: "/data",
     icon: <ImgIcon icon={bill} />,
-    children:[
+    children: [
       {
         label: "字段管理",
         key: "/filedmanage",
