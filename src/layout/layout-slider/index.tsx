@@ -1,4 +1,4 @@
-import menuItems from "@/routes/menu/sliderMenus";
+import menuItems from "@/routes/menu/sideMenus";
 import { Layout, Menu, MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const LayoutSlider = () => {
   /**获取当前路由的pathname*/
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  /** 菜单项，这个需要通过鉴权去动态渲染 */
+  /** 菜单项，这个需要通过鉴权去动态渲染（后面别忘实现了） */
   const [items,setItems] = useState();
   /**是否折叠菜单*/
   const [bCollapse, setCollapse] = useState<boolean>(false);

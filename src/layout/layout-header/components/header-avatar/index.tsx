@@ -1,9 +1,9 @@
-import { useRef } from "react";
-import UserInfoModal, { RefProps } from "./modals/user-info";
-import { Avatar, Dropdown} from "antd";
-import { useNavigate } from "react-router-dom";
-import type { MenuProps } from "antd";
 import head from "@/assets/images/head.jpg";
+import type { MenuProps } from "antd";
+import { Avatar, Dropdown } from "antd";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import UserInfoModal, { RefProps } from "./modals/user-info";
 import UserPasswordModal from "./modals/user-password";
 
 const AvatarIcon = () => {
@@ -25,6 +25,11 @@ const AvatarIcon = () => {
       key: "3",
       label: <span>修改密码</span>,
       onClick: () => {pwdRef.current!.showModal('appleyk')},
+    },
+    {
+      key: "4",
+      label: <span>退出登录</span>,
+      onClick: () => {navigate("/signin")},
     },
   ];
 

@@ -34,18 +34,18 @@ body {
 }
 
 /**去除浏览器自动填充input输入框带背景色*/
-input{
-    width: 100%;
-    background: transparent;
-    height: 100%;
-    font-size: 15px;
-    &::placeholder {
-        background: transparent;
-        color: #B2B2B2;
-        font-size: 15px;
-    }
-    &:-webkit-autofill{
-        background: transparent;
-        transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
-    }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    border: 0px solid #CCC!important;
+}
+
+/************************* 重置ant ui 组件样式 **********************************/
+
+/**重置ant样式*/
+.ant-input{
+    height: 35px;
+}
+/**表单下边距，默认24太大修改为16px*/
+.ant-form-item{
+    margin-bottom:16px;
 }

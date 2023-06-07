@@ -1,0 +1,23 @@
+.login-icon-list {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    .custom-icon{
+        &:hover{
+            cursor: pointer
+        }
+    }
+}
+.login-others{
+    width: 260px;
+    height: 80px;
+    display: flex;
+    /**支持换行*/
+    flex-wrap: wrap; 
+    .custom-icon{
+        margin-left: 20px;
+        width: 16%;
+    }
+}

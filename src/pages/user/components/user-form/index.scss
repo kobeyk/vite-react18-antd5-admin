@@ -1,32 +1,96 @@
 @import "@/styles/variables.scss";
 
-.user-form{
-    position:relative;
-    margin: 0 auto;
-    margin-top: 100px;
-    width: 400px;
+// 层级多的时候，可以适当的进行样式扁平化
 
-    /**头部*/
-    .form-header {
-        height: 26px;
-        display: flex;
-        /**底部对齐*/
-        align-items: flex-end;
-        /**两端对齐，项目之间的间隔都相等*/
-        justify-content: space-between;
-        margin:0px 0px 24px;
-        .form-header-title{
-            color: #40485B;
-            font-size:24px;
-            font-weight: bold;
-            line-height: 26px;
-        }
-        .form-header-title-tip{
-            float: right;
-         }
-    }
-    .ant-input{
-        height: 40px;
-    }
+.user-form {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 370px;
 }
 
+.user-form .form-header {
+    height: 26px;
+    display: flex;
+    /**底部对齐*/
+    align-items: flex-end;
+    /**两端对齐，项目之间的间隔都相等*/
+    justify-content: space-between;
+    margin: 0px 0px 24px;
+}
+
+.user-form .form-header .form-header-title {
+    color: #40485b;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+/**记住我所在的行级元素样式*/
+.remember-checked {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-end;
+}
+
+/**登录按钮*/
+.login-form-button {
+    width: 100%;
+    height: 40px;
+    border-radius: 0;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+/**已有账号，忘记密码*/
+.login-form-forgot {
+    text-align: center;
+    margin-top: 8px;
+}
+
+/**使用OSChina账号登录*/
+.use-oschina-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span{
+        margin-left: 20px;
+        font-size: 16px;
+    }
+    margin-top: 5px;
+}
+
+/**其他登录方式*/
+.other-login-mode {
+    height: 30px;
+    h4 {
+        /**设置为块级元素会独占一行形成上下居中的效果*/
+        display: block;
+        color: gray;
+        position: relative;
+        text-align: center;
+    }
+    /**h4标签选择器前后添加伪元素线*/
+    h4::before,
+    h4::after {
+        content: "";
+        /**定位背景横线的位置*/
+        position: absolute;
+        top: 45%;
+        width: 35%;
+        background: #494949;
+        height: 1px;
+    }
+    h4::before {
+        /**调整背景横线的左距离*/
+        left: 2%;
+        /**背景色渐变*/
+        background:linear-gradient(to left,#12d122,#981313);
+    }
+    h4::after {
+        /**调整背景横线的左距离*/
+        right: 2%;
+        /**背景色渐变*/
+        background:linear-gradient(to left,#c91818,#0cec9d);
+    }
+}

@@ -1,11 +1,17 @@
-export const cn={
-  common:{
-    changeLanguage:"切换语言",
-    chinese:"中文简体",
-    chinesetw:"中文繁体",
-    english:"英语"
+export const cn = {
+  common: {
+    title: "SpringBoot3后台管理系统",
+    chinese: "中简",
+    chinesetw: "中繁",
+    english: "英语",
   },
-  sliderMenu:{
-    home:"主页"
-  }
-}
+  sideMenu: {
+    home: "主页",
+    userManagement: "用户管理",
+    roleManagement: "角色管理",
+    purviewManagement: "权限管理",
+    dataManagement: "数据管理",
+    fieldManagement: "字段管理",
+    templateManagement: "模板管理",
+  },
+};

@@ -1,5 +1,7 @@
+import i18n from '@/i18n';
+import LocaleHelper from '@/utils/helper/localeHelper';
 import { FC, ReactElement } from 'react';
-import "./index.scss"
+import "./index.scss";
 const HeaderLogo:FC = ():ReactElement => {
   return (
     <div className="logo">
@@ -8,7 +10,7 @@ const HeaderLogo:FC = ():ReactElement => {
          alt="加载失败"
          title="logo"
       />
-      <span>SpringBoot3后台管理系统</span>
+      <span>{i18n.t(LocaleHelper.getSystemTitle())}</span>
     </div>
   );
 };

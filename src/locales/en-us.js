@@ -1,11 +1,17 @@
-export const en={
-  common:{
-    changeLanguage:"Change Language",
-    chinese:"simplified chinese",
-    chinesetw:"traditional chinese",
-    english:"english"
+export const en = {
+  common: {
+    title: "SpringBoot3·Admin",
+    chinese: "cn",
+    chinesetw: "tw",
+    english: "en",
   },
-  sliderMenu:{
-    home:"home"
-  }
-}
+  sideMenu: {
+    home: "Home",
+    userManagement: "User",
+    roleManagement: "Role",
+    purviewManagement: "Purview",
+    dataManagement: "Data",
+    fieldManagement: "Field",
+    templateManagement: "Template",
+  },
+};

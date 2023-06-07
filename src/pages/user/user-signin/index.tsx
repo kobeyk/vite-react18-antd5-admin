@@ -1,4 +1,5 @@
 import allRoutes from '@/routes';
+import "@/styles/common.scss";
 import GeneralUtils from "@/utils/general";
 import UserFooter from '../components/user-footer';
 import UserForm from '../components/user-form';

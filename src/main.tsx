@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     locale={zhCN}
     theme={{
       token: {
-        colorPrimary: "orange",
+        colorPrimary: "#FE7300",
       },
       components: {
         // 修改单个组件的主色而不影响其他的UI组件
