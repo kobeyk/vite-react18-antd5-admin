@@ -1,7 +1,6 @@
-import LazyLoad from "@/components/router-wrapper/LazyLoad";
+import LazyLoad from '@/components/router-wrapper/LazyLoad';
 import { lazy } from "react";
 import { IRouteObject, RouteMeta } from "../renderRouter";
-
 const UserRoutes: IRouteObject[] = [
   {
     path: "/signin",
@@ -10,7 +9,7 @@ const UserRoutes: IRouteObject[] = [
   },
   {
     path: "/signup",
-    element: LazyLoad(lazy(() => import("@/pages/user/user-signin"))),
+    element: LazyLoad(lazy(() => import("@/pages/user/user-signup"))),
     meta: new RouteMeta("用户注册",false),
   },
 ];

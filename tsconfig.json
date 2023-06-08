@@ -13,7 +13,7 @@
     "moduleResolution": "Node",
     "allowJs": true,
     "strict": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false, // 未使用的变量生产环境不报错
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "noFallthroughCasesInSwitch": true,

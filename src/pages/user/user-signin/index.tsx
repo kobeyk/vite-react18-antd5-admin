@@ -6,14 +6,14 @@ import UserForm from '../components/user-form';
 import "../index.scss";
 const UserSignIn = () => {
   const routesData = GeneralUtils.getFlatRoutes(allRoutes);
-  console.log(routesData)
+  console.log(1111,routesData)
   return (
     <div className="user-session-wrapper">
       <div className="wrapper-container">
         <div className="container-body">
           <div className="session-left-box">session-left-box</div>
           <div className="session-right-form">
-            <UserForm/>
+            <UserForm title="登录" bLogin={true}/>
           </div>
         </div>
         <div className="container-footer">

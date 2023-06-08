@@ -11,7 +11,7 @@ const LayoutSlider = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   /** 菜单项，这个需要通过鉴权去动态渲染（后面别忘实现了） */
-  const [items,setItems] = useState();
+  // const [items,setItems] = useState();
   /**是否折叠菜单*/
   const [bCollapse, setCollapse] = useState<boolean>(false);
   /**当前选中的菜单项 key 数组 */

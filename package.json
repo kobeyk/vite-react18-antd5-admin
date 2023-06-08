@@ -33,6 +33,7 @@
     "axios": "^1.4.0",
     "i18next": "^22.5.0",
     "i18next-browser-languagedetector": "^7.0.2",
+    "nprogress": "^0.2.0",
     "qnn-react-cron": "^1.0.4",
     "qs": "^6.11.2",
     "react": "^18.2.0",
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.21.5",
     "@types/node": "^20.1.5",
+    "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",

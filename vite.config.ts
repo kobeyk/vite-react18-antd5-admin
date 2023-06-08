@@ -9,6 +9,7 @@ import {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:"./", /** 解决打包发布资源404问题 */
   plugins: [
     react({
       babel:{

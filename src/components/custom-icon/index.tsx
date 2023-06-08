@@ -11,7 +11,7 @@ const icon = createFromIconfontCN({
 // });
 
 const navigate = (e: any, url: string = "/") => {
-  /** 阻止冒泡 */
+  /** 阻止冒泡，防止页面加载时按钮被点击然后调走 */
   e.stopPropagation();
   window.location.href = url;
 };

@@ -11,13 +11,13 @@ const LazyLoad = (Comp: LazyExoticComponent<any>): ReactNode => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              height: "100%",
+              height: "100vh",
             }}
           />
         }
       >
         <Comp/>
-      </Suspense>
+    </Suspense> 
   );
 };
 export default LazyLoad;

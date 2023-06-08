@@ -1,5 +1,4 @@
 import { fetchPost } from "@/core/api/fetchPost";
-import handler from "@/design-mode/chain-of-responsibility/v1";
 import GeneralUtils from "@/utils/general";
 import { AxiosCanceler } from "@/utils/helper/axiosCanceler";
 import { Button } from "antd";

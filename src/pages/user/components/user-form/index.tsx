@@ -1,57 +1,70 @@
 import CustomIcon from "@/components/custom-icon";
+import FormValidRule, { Validator } from "@/utils/rules";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { FC, ReactElement, useEffect, useState } from "react";
+import { fetchGet } from "../../../../core/api/fetchGet";
 import ThirdPartyLogin from "../third-party-login";
 import "./index.scss";
-const UserForm = () => {
-  const [login, setLogin] = useState<boolean>(true);
+
+interface IUserFormProps{
+  /** 表单标题 */
+  title: string;
+  /** 是否是登录（功能） */
+  bLogin: boolean;
+}
+
+const UserForm:FC<IUserFormProps> = ({
+  title,bLogin
+}):ReactElement => {
+  /** antd4.x 不再使用createForm包裹组件了，这里直接使用钩子函数 */
+  const [form] = Form.useForm();
   const [checked, setChecked] = useState<boolean>(false);
-  const { pathname } = useLocation();
+  const [validUserName, setValidUserName] = useState<Validator[]>();
+  const [validPassword, setValidPassword] = useState<Validator[]>();
+  const [validConfirmPassword, setValidConfirmPassword] = useState<any>();
   useEffect(() => {
-    console.log(pathname);
-    if (pathname.indexOf("/signin") !== -1) {
-      setLogin(true);
-    } else if (pathname.indexOf("/signup") !== -1) {
-      setLogin(false);
+    if (bLogin) {
+      setValidUserName(FormValidRule.validUserNameOfLogin);
+      setValidPassword(FormValidRule.commonValidate("请输入您的账号密码！"))
+    } else  {
+      setValidUserName(FormValidRule.validUserNameOfRegist);
+      setValidPassword(FormValidRule.validateUserPsw)
+      setValidConfirmPassword(FormValidRule.validateUserConfirmPsw)
     }
-  }, [pathname]);
+  }, []);
   const onCheckRememberMe = (e: CheckboxChangeEvent) => {
     setChecked(e.target.checked);
   };
-  const onFinish = (values: any) => {
+
+  /** 登录或注册 */
+  const onFinish = async (values: any) => {
     console.log("Received values of form: ", values);
+    const data = await fetchGet("/user/query");
+    console.log(data);
   };
-  const content = (
-    <div>
-      <p>Content</p>
-      <p>Content</p>
-    </div>
-  );
+
   return (
     <div className="user-form">
       <div className="form-header">
-        <span className="form-header-title">{login ? "登录" : "注册"}</span>
+        <span className="form-header-title">{title}</span>
         <span className="form-header-title-tip">
-          {login ? "没有账号？" : "已有账号？"}
-          {login ? (
+          {bLogin ? "没有账号？" : "已有账号？"}
+          {bLogin ? (
             <a href="#/signup">点此注册</a>
           ) : (
-            <a href="#/signin">点此注册</a>
+            <a href="#/signin">点此登录</a>
           )}
         </span>
       </div>
       <Form
+        form={form}
         name="normal_login"
         initialValues={{ remember: true }}
         onFinish={onFinish}
       >
-        <Form.Item
-          name="username"
-          rules={[{ required: true, message: "Please input your Username!" }]}
-        >
+        <Form.Item name="username" rules={validUserName}>
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
             placeholder="Username"
@@ -59,14 +72,30 @@ const UserForm = () => {
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: "Please input your Password!" }]}
+          rules={validPassword}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
             placeholder="Password"
+            autoComplete="off"
           />
         </Form.Item>
+        {
+          bLogin ? null : (
+            <Form.Item
+            name="repassword"
+            rules={validConfirmPassword}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="ConfirmPassword"
+              autoComplete="off"
+            />
+          </Form.Item>
+          )
+        }
         <Form.Item>
           <Form.Item name="remember" noStyle>
             <div className="remember-checked">
@@ -90,7 +119,7 @@ const UserForm = () => {
             htmlType="submit"
             className="login-form-button"
           >
-            登录
+            {title}
           </Button>
         </Form.Item>
         <Form.Item className="login-form-forgot">
@@ -106,7 +135,7 @@ const UserForm = () => {
           <h4>其他登录方式</h4>
         </Form.Item>
         <Form.Item>
-          <ThirdPartyLogin/>
+          <ThirdPartyLogin />
         </Form.Item>
       </Form>
     </div>

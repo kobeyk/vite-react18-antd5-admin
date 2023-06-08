@@ -66,24 +66,26 @@
         transform: translate(-50%, -50%);
         padding: 0;
         z-index: 1;
-        .container-body {
-            display: flex;
-            position: relative;
-            margin: auto;
-            width: inherit;
-            box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.3);
-            .session-left-box {
-                @include bodyDiv;
-                position: relative;
-                color:#fff;
-                /**背景渐变色*/
-                background: linear-gradient(0deg, #3a485a 0%, #607089 100%);
-            }
-            .session-right-form {
-                @include bodyDiv;
-                background: #fff;
-            }
-        }
     }
 
+}
+
+/**如果页面样式布局不是太复杂，不建议把子样式套在父样式里面写，不利于阅读*/
+.container-body {
+    display: flex;
+    position: relative;
+    margin: auto;
+    width: inherit;
+    box-shadow: 0px 20px 80px 0px rgba(0, 0, 0, 0.3);
+    .session-left-box {
+        @include bodyDiv;
+        position: relative;
+        color:#fff;
+        /**背景渐变色*/
+        background: linear-gradient(0deg, #3a485a 0%, #607089 100%);
+    }
+    .session-right-form {
+        @include bodyDiv;
+        background: #fff;
+    }
 }
