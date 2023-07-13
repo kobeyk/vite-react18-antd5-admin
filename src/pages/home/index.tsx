@@ -1,8 +1,7 @@
-import { fetchPost } from "@/core/api/fetchPost";
-import GeneralUtils from "@/utils/general";
 import { AxiosCanceler } from "@/utils/helper/axiosCanceler";
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { fetchGet } from '../../core/api/fetchGet';
 const Home = () => {
   const _login = () => {
     let authUser = {
@@ -10,15 +9,18 @@ const Home = () => {
       userName: "admin",
       password: "Aa123456",
     };
-    fetchPost("/auth/login", GeneralUtils.toFormData(authUser)).then((res) => {
+    // fetchPost("/auth/login", GeneralUtils.toFormData(authUser)).then((res) => {
+    //   console.log(res);
+    // });
+    fetchGet("/user/query").then((res)=>{
       console.log(res);
-    });
+    })
   };
 
   const _loginCancel = () => {
     AxiosCanceler.getInstance().removePending({
-      url: "/auth/login",
-      method: "post",
+      url: "/user/query",
+      method: "get",
     });
   };
 
