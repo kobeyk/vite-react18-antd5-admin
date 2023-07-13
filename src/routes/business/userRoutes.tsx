@@ -3,14 +3,9 @@ import { lazy } from "react";
 import { IRouteObject, RouteMeta } from "../renderRouter";
 const UserRoutes: IRouteObject[] = [
   {
-    path: "/signin",
-    element: LazyLoad(lazy(() => import("@/pages/user/user-signin"))),
+    path: "/login",
+    element: LazyLoad(lazy(() => import("@/pages/user/user-login"))),
     meta: new RouteMeta("用户登录",false),
-  },
-  {
-    path: "/signup",
-    element: LazyLoad(lazy(() => import("@/pages/user/user-signup"))),
-    meta: new RouteMeta("用户注册",false),
   },
 ];
 

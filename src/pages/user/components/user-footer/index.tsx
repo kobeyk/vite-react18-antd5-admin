@@ -7,27 +7,27 @@ interface IFooterSpanItem{
 const spanItems:IFooterSpanItem[] = [
     {
         title:"@ Gitee.com",
-        url:"https://www.baidu.com"
+        url:"https://space.bilibili.com/452968297"
     },
     {
         title:"关于我们",
-        url:"https://www.baidu.com"
+        url:"https://space.bilibili.com/452968297"
     },
     {
         title:"使用条款",
-        url:"https://www.baidu.com"
+        url:"https://gitee.com/appleyk"
     },
     {
         title:"帮助文档",
-        url:"https://www.baidu.com"
+        url:"https://gitee.com/appleyk"
     },
     {
         title:"在线自助服务",
-        url:"https://www.baidu.com"
+        url:"https://blog.csdn.net/Appleyk"
     },
     {
         title:"重发激活邮件",
-        url:"https://www.baidu.com"
+        url:"https://blog.csdn.net/Appleyk"
     }
 ]
 const UserFooter = () => {

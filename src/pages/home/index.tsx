@@ -33,7 +33,7 @@ const Home = () => {
         Sign In Cancel
       </Button>
       <hr/>
-      <Link to="/signin">用户登录</Link>
+      <Link to="/login">用户登录</Link>
     </div>
   );
 };

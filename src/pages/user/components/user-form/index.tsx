@@ -8,18 +8,11 @@ import { fetchGet } from "../../../../core/api/fetchGet";
 import ThirdPartyLogin from "../third-party-login";
 import "./index.scss";
 
-interface IUserFormProps{
-  /** 表单标题 */
-  title: string;
-  /** 是否是登录（功能） */
-  bLogin: boolean;
-}
-
-const UserForm:FC<IUserFormProps> = ({
-  title,bLogin
-}):ReactElement => {
+const UserForm: FC = (): ReactElement => {
   /** antd4.x 不再使用createForm包裹组件了，这里直接使用钩子函数 */
   const [form] = Form.useForm();
+  const [bLogin, setLogin] = useState<boolean>(true);
+  const [title, setTitle] = useState<string>("登录");
   const [checked, setChecked] = useState<boolean>(false);
   const [validUserName, setValidUserName] = useState<Validator[]>();
   const [validPassword, setValidPassword] = useState<Validator[]>();
@@ -27,13 +20,13 @@ const UserForm:FC<IUserFormProps> = ({
   useEffect(() => {
     if (bLogin) {
       setValidUserName(FormValidRule.validUserNameOfLogin);
-      setValidPassword(FormValidRule.commonValidate("请输入您的账号密码！"))
-    } else  {
+      setValidPassword(FormValidRule.commonValidate("请输入您的账号密码！"));
+    } else {
       setValidUserName(FormValidRule.validUserNameOfRegist);
-      setValidPassword(FormValidRule.validateUserPsw)
-      setValidConfirmPassword(FormValidRule.validateUserConfirmPsw)
+      setValidPassword(FormValidRule.validateUserPsw);
+      setValidConfirmPassword(FormValidRule.validateUserConfirmPsw);
     }
-  }, []);
+  }, [bLogin]);
   const onCheckRememberMe = (e: CheckboxChangeEvent) => {
     setChecked(e.target.checked);
   };
@@ -45,6 +38,16 @@ const UserForm:FC<IUserFormProps> = ({
     console.log(data);
   };
 
+  const switchLogin = (flag: boolean = true) => {
+    if (flag) {
+      setLogin(true);
+      setTitle("登录");
+    } else {
+      setLogin(false);
+      setTitle("注册");
+    }
+  };
+
   return (
     <div className="user-form">
       <div className="form-header">
@@ -52,9 +55,9 @@ const UserForm:FC<IUserFormProps> = ({
         <span className="form-header-title-tip">
           {bLogin ? "没有账号？" : "已有账号？"}
           {bLogin ? (
-            <a href="#/signup">点此注册</a>
+            <a onClick={()=>switchLogin(false)}>点此注册</a>
           ) : (
-            <a href="#/signin">点此登录</a>
+            <a onClick={()=>switchLogin()}>点此登录</a>
           )}
         </span>
       </div>
@@ -70,10 +73,7 @@ const UserForm:FC<IUserFormProps> = ({
             placeholder="Username"
           />
         </Form.Item>
-        <Form.Item
-          name="password"
-          rules={validPassword}
-        >
+        <Form.Item name="password" rules={validPassword}>
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
@@ -81,12 +81,8 @@ const UserForm:FC<IUserFormProps> = ({
             autoComplete="off"
           />
         </Form.Item>
-        {
-          bLogin ? null : (
-            <Form.Item
-            name="repassword"
-            rules={validConfirmPassword}
-          >
+        {bLogin ? null : (
+          <Form.Item name="repassword" rules={validConfirmPassword}>
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
@@ -94,8 +90,7 @@ const UserForm:FC<IUserFormProps> = ({
               autoComplete="off"
             />
           </Form.Item>
-          )
-        }
+        )}
         <Form.Item>
           <Form.Item name="remember" noStyle>
             <div className="remember-checked">

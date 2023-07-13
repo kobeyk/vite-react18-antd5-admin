@@ -39,7 +39,7 @@ const RouterGuard = ({ children }: { children: JSX.Element }) => {
       let token = localStorage.getItem('token')
       /** 这里如果想继续对token进行check（check通过可以对服务器token进行续期）也可以 */
       if (!token) {
-         return <Navigate to="/signin" replace/>
+         return <Navigate to="/login" replace/>
       }
   }
 
@@ -50,8 +50,8 @@ const RouterGuard = ({ children }: { children: JSX.Element }) => {
     let matchRole = authRoles.filter((r=> role === r))
     if (!matchRole || matchRole.length === 0) {
       // message.error("你不具有访问当前路由页的权限")
-      /** 退回到之前的url */
-      history.back()
+      /** 跳转到403页面 */
+      return <Navigate to="/403" replace/>
     }
   }
   return children;

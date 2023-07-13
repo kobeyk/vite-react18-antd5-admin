@@ -14,22 +14,31 @@ const AvatarIcon = () => {
     {
       key: "1",
       label: <span>首页</span>,
-      onClick: ()=>navigate("/home")
+      onClick: () => navigate("/home"),
     },
     {
       key: "2",
       label: <span>个人信息</span>,
-      onClick: () => {infoRef.current!.showModal({name:'appleyk'})},
+      onClick: () => {
+        infoRef.current!.showModal({ name: "appleyk" });
+      },
     },
     {
       key: "3",
       label: <span>修改密码</span>,
-      onClick: () => {pwdRef.current!.showModal('appleyk')},
+      onClick: () => {
+        pwdRef.current!.showModal("appleyk");
+      },
+    },
+    {
+      type: "divider",
     },
     {
       key: "4",
       label: <span>退出登录</span>,
-      onClick: () => {navigate("/signin")},
+      onClick: () => {
+        navigate("/login");
+      },
     },
   ];
 
@@ -41,10 +50,10 @@ const AvatarIcon = () => {
         arrow
         trigger={["click"]}
       >
-        <Avatar size="large" src={head}/>
+        <Avatar size="large" src={head} />
       </Dropdown>
       <UserInfoModal innerRef={infoRef} />
-      <UserPasswordModal innerRef={pwdRef}/>
+      <UserPasswordModal innerRef={pwdRef} />
     </>
   );
 };
